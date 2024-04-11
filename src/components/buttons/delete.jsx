@@ -1,11 +1,15 @@
 import Default from "./default.jsx";
+import Trash from "../icons/trash.jsx";
 
-const props = {
-    color: 'red',
-    title: 'Edit',
-}
+export default function Delete({text}) {
 
-export default function Delete() {
+    const props = {
+        color: 'red',
+        title: 'Delete',
+        icon: <Trash/>,
+        text,
+    }
+
     return (
         <Default props={props}/>
     )
