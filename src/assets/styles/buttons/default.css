@@ -1,0 +1,7 @@
+button {
+    -webkit-transition: color 1s !important;
+    -moz-transition: color 1s !important;
+    -ms-transition: color 1s !important;
+    -o-transition: color 1s !important;
+    transition: color 1s !important;
+}
