@@ -17,7 +17,7 @@ export default function App() {
             element: <Home/>,
         },
         {
-            path: "/posts",
+            path: "posts",
             element: <Posts/>,
         },
     ]);
