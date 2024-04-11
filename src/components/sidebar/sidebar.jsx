@@ -4,8 +4,9 @@ import Paper from "../icons/paper.jsx";
 import SidebarItem from "./sidebarItem.jsx";
 import Close from "../buttons/close.jsx";
 import {useSelector, useDispatch} from 'react-redux';
-import {showSidebar, hideSidebar} from '../../features/sidebarSlice';
+import {showSidebar, hideSidebar} from '../../features/sidebarSlice.js';
 import H3 from "../headings/h3.jsx";
+import Hr from "../partial/hr.jsx";
 
 export default function Sidebar() {
     const visible = useSelector((state) => state.sidebar.visible);
@@ -40,12 +41,12 @@ export default function Sidebar() {
             <aside id="default-sidebar"
                    className={`fixed top-0 left-0 z-40 w-64 h-screen ${!visible ? 'hidden' : ''}`}
                    aria-label="SidebarButton">
-                <div className="h-full px-5 py-5 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                <div className="h-full px-5 py-5 overflow-y-auto bg-gray-100 dark:bg-gray-900">
                     <div className="flex justify-between items-center">
                         <H3 text={'Menu'}/>
                         <Close onClickHandler={collapse}/>
                     </div>
-                    <hr className="my-5"/>
+                    <Hr/>
                     <ul className="space-y-2 font-medium">
                         {
                             items && items.map((item) => {

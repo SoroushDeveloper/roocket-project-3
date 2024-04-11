@@ -1,3 +1,15 @@
+@media only screen and (max-width: 600px) {
+    .posts-table, .button-text {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .posts-grid {
+        display: none !important;
+    }
+}
+
 table {
     border-collapse: separate;
     border-spacing: 0;

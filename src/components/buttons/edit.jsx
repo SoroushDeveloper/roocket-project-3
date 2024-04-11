@@ -1,11 +1,15 @@
 import Default from "./default.jsx";
+import Pencil from "../icons/pencil.jsx";
 
-const props = {
-    color: 'yellow',
-    title: 'Edit',
-}
+export default function Edit({text}) {
 
-export default function Edit() {
+    const props = {
+        color: 'yellow',
+        title: 'Edit',
+        icon: <Pencil/>,
+        text,
+    }
+
     return (
         <Default props={props}/>
     )

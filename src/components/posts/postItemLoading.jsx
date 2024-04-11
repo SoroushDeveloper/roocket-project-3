@@ -1,7 +1,7 @@
 import Text from "../placeholders/text.jsx";
 import Button from "../placeholders/button.jsx";
 
-export default function PostLoading() {
+export default function PostItemLoading() {
     return (
         <tr>
             <td className="p-5">

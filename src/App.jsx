@@ -1,5 +1,5 @@
 import './App.css'
-import Sidebar from "./components/partial/sidebar.jsx";
+import Sidebar from "./components/sidebar/sidebar.jsx";
 import {
     createBrowserRouter,
     RouterProvider,
@@ -24,10 +24,12 @@ export default function App() {
 
     return (
         <Provider store={store}>
-            <Sidebar/>
-            <div className="p-4 sm:ml-64 mt-5">
-                <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-                    <RouterProvider router={router}/>
+            <div className="flex justify-center">
+                <Sidebar/>
+                <div className="p-4 mt-5 w-full">
+                    <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                        <RouterProvider router={router}/>
+                    </div>
                 </div>
             </div>
         </Provider>

@@ -1,4 +1,6 @@
 import moment from 'moment';
+import Edit from "../buttons/edit.jsx";
+import Delete from "../buttons/delete.jsx";
 
 export default function PostItem({post}) {
     const creationDate = moment(post?.createdAt).format('MMMM Do YYYY, h:mm:ss A');
@@ -21,14 +23,8 @@ export default function PostItem({post}) {
             </td>
             <td className="p-5">
                 <div className="flex justify-around">
-                    <button
-                        className="border-yellow-500 border hover:bg-yellow-500 hover:text-white dark:hover:text-black text-yellow-500 font-bold py-2 px-4 rounded dark:text-yellow-500">
-                        Edit
-                    </button>
-                    <button
-                        className="border-red-500 border hover:bg-red-500 hover:text-white dark:hover:text-black text-red-500 font-bold py-2 px-4 rounded dark:text-red-500">
-                        Delete
-                    </button>
+                    <Edit/>
+                    <Delete/>
                 </div>
             </td>
         </tr>
