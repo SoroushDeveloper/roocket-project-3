@@ -1,6 +1,7 @@
 import H1 from "../components/headings/h1.jsx";
 import useFetch from "../hooks/useFetch.js";
 import Text from "../components/placeholders/text.jsx";
+import ShowLink from "../components/partial/showLink.jsx";
 
 export default function Home() {
 
@@ -16,9 +17,15 @@ export default function Home() {
             {
                 !isLoading
                     ?
-                    <p className="text-gray-900 dark:text-gray-400">
-                        {text}
-                    </p>
+                    <>
+                        <p className="text-gray-900 dark:text-gray-400">
+                            {text}
+                        </p>
+                        <br/>
+                        <div className="flex justify-center">
+                            <ShowLink props={{title: 'Review', link: '/posts'}}/>
+                        </div>
+                    </>
                     :
                     <div className="flex justify-center">
                         <Text/>

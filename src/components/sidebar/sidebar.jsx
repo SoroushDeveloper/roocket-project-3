@@ -1,5 +1,5 @@
 import SidebarButton from "../buttons/sidebarButton.jsx";
-import Home from "../icons/home.jsx";
+import HomeIcon from "../icons/homeIcon.jsx";
 import Paper from "../icons/paper.jsx";
 import SidebarItem from "./sidebarItem.jsx";
 import Close from "../buttons/close.jsx";
@@ -7,23 +7,20 @@ import {useSelector, useDispatch} from 'react-redux';
 import {showSidebar, hideSidebar} from '../../features/sidebarSlice.js';
 import H3 from "../headings/h3.jsx";
 import Hr from "../partial/hr.jsx";
+import HomeButton from "../buttons/homeButton.jsx";
 
 export default function Sidebar() {
     const visible = useSelector((state) => state.sidebar.visible);
     const dispatch = useDispatch();
-    const collapse = () => {
-        dispatch(hideSidebar())
-    };
-    const expand = () => {
-        dispatch(showSidebar())
-    };
+    const collapse = () => dispatch(hideSidebar());
+    const expand = () => dispatch(showSidebar());
     const pathName = window.location.pathname;
     const items = [
         {
             id: 1,
             name: 'Dashboard',
             link: '/',
-            icon: <Home/>,
+            icon: <HomeIcon/>,
             active: pathName === '/'
         },
         {
@@ -56,6 +53,9 @@ export default function Sidebar() {
                     </ul>
                 </div>
             </aside>
+            {
+                pathName === '/' ? null : <HomeButton/>
+            }
         </>
     )
 }
