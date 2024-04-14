@@ -38,7 +38,8 @@ export default function Sidebar() {
             <aside id="default-sidebar"
                    className={`fixed top-0 left-0 z-40 w-64 h-screen ${!visible ? 'hidden' : ''}`}
                    aria-label="SidebarButton">
-                <div className="h-full px-5 py-5 overflow-y-auto bg-gray-100 dark:bg-gray-900">
+                <div
+                    className="h-full px-5 py-5 overflow-y-auto bg-gray-100 dark:bg-gray-900 shadow-2xl shadow-gray-400 dark:shadow-black">
                     <div className="flex justify-between items-center">
                         <H3 text={'Menu'}/>
                         <Close onClickHandler={collapse}/>
