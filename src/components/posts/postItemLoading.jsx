@@ -1,5 +1,4 @@
 import Text from "../placeholders/text.jsx";
-import Button from "../placeholders/button.jsx";
 
 export default function PostItemLoading() {
     return (
@@ -19,12 +18,7 @@ export default function PostItemLoading() {
                     <Text/>
                 </span>
             </td>
-            <td className="p-5">
-                <div className="flex justify-around">
-                    <Button color={'yellow'}/>
-                    <Button color={'red'}/>
-                </div>
-            </td>
+            <td className="p-5"></td>
         </tr>
     )
 }
