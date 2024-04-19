@@ -11,7 +11,7 @@ import EditPost from "../modals/editPost.jsx";
 
 export default function PostCard({post, deletePostHandler, updatePostHandler}) {
     const url = 'https://66170aeaed6b8fa43481e54d.mockapi.io/posts/' + post?.id;
-    const creationDate = moment(post?.createdAt).format('MM/DD/YYYY | h:mm');
+    const creationDate = moment(post?.createdAt).format('MMMM Do YYYY, h:mm:ss A');
 
     const [showModal, setShowModal] = useState(false);
 
@@ -58,19 +58,16 @@ export default function PostCard({post, deletePostHandler, updatePostHandler}) {
     }
 
     return (
-        <div className="rounded-xl bg-gray-200 dark:bg-gray-800 p-5">
-            <div className="flex justify-between pb-5 border-b border-black">
-                <span className="text-gray-900 dark:text-gray-100">
-                    #{post?.id}
-                </span>
-                <span className="text-gray-900 dark:text-gray-100">
+        <div className="rounded-xl bg-gray-200 dark:bg-gray-800 px-5">
+            <div className="flex justify-center py-3 border-b border-black">
+                <span className="text-gray-900 dark:text-gray-100 text-sm">
                     {creationDate}
                 </span>
             </div>
             <div className="text-left py-5 border-b border-black">
                 <H2 text={post?.title}/>
             </div>
-            <div className="flex justify-end space-x-2 pt-5">
+            <div className="flex justify-end space-x-2 py-4">
                 <Edit onClickHandler={showModalHandler}/>
                 <Delete onClickHandler={deletePost}/>
             </div>
