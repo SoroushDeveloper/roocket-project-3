@@ -1,12 +1,13 @@
 import moment from 'moment';
 import axios from "axios";
+import Swal from "sweetalert2";
 
 import Edit from "../buttons/edit.jsx";
 import Delete from "../buttons/delete.jsx";
 import Error from "../toasts/error.js";
 import Success from "../toasts/success.js";
-import Swal from "sweetalert2";
 import EditPost from "../modals/editPost.jsx";
+
 import {useState} from "react";
 
 export default function PostItem({post, deletePostHandler, updatePostHandler}) {
@@ -38,7 +39,7 @@ export default function PostItem({post, deletePostHandler, updatePostHandler}) {
             if (result.isConfirmed) {
                 axios.delete(url)
                     .then(function (response) {
-                        deletePostHandler(post?.id);
+                        deletePostHandler(response.data.id);
                         Success('Post deleted successfully');
                     })
                     .catch(function (error) {
@@ -76,10 +77,10 @@ export default function PostItem({post, deletePostHandler, updatePostHandler}) {
                         <Edit onClickHandler={showModalHandler}/>
                         <Delete onClickHandler={deletePost}/>
                     </div>
+                    <EditPost showModal={showModal} hideModalHandler={hideModalHandler} post={post}
+                              updatePostHandler={updatePostHandler}/>
                 </td>
             </tr>
-            <EditPost showModal={showModal} hideModalHandler={hideModalHandler} post={post}
-                      updatePostHandler={updatePostHandler}/>
         </>
     )
 }

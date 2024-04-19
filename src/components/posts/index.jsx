@@ -1,11 +1,9 @@
-import PostItem from "./postItem.jsx";
 import '../../assets/styles/posts.css';
+
+import PostItem from "./postItem.jsx";
 import PostItemLoading from "./postItemLoading.jsx";
 import PostCard from "./postCard.jsx";
 import PostCardLoading from "./postCardLoading.jsx";
-import axios from "axios";
-import Success from "../toasts/success.js";
-import Error from "../toasts/error.js";
 
 export default function Index({posts, isLoading, onDataReceived}) {
 
@@ -61,6 +59,7 @@ export default function Index({posts, isLoading, onDataReceived}) {
                                 <PostItemLoading/>
                                 <PostItemLoading/>
                                 <PostItemLoading/>
+                                <PostItemLoading/>
                             </>
                     }
                     </tbody>
@@ -71,10 +70,15 @@ export default function Index({posts, isLoading, onDataReceived}) {
                     !isLoading
                         ?
                         posts && posts.map((post) => {
-                            return (<PostCard key={post?.id} post={post}/>);
+                            return (
+                                <PostCard key={post?.id} post={post}
+                                          deletePostHandler={deletePostHandler}
+                                          updatePostHandler={updatePostHandler}/>
+                            );
                         })
                         :
                         <>
+                            <PostCardLoading/>
                             <PostCardLoading/>
                             <PostCardLoading/>
                             <PostCardLoading/>
