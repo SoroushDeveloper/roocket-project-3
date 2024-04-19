@@ -8,6 +8,8 @@ import Posts from "./routes/posts.jsx";
 import Home from "./routes/home.jsx";
 import {Provider} from "react-redux";
 import store from "./reducers/index.js";
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
@@ -32,6 +34,7 @@ export default function App() {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </Provider>
     )
 }

@@ -1,8 +1,6 @@
 import moment from "moment";
-import H3 from "../headings/h3.jsx";
 import Edit from "../buttons/edit.jsx";
 import Delete from "../buttons/delete.jsx";
-import Hr from "../partial/hr.jsx";
 import H2 from "../headings/h2.jsx";
 
 export default function PostCard({post}) {
