@@ -15,6 +15,16 @@ export default function Index({posts, isLoading, onDataReceived}) {
         });
         onDataReceived(newPosts);
     }
+    const updatePostHandler = (post, data) => {
+        let newPosts = posts.map((post) => {
+            if (post.id === data.id) {
+                post.title = data.title;
+                return post;
+            }
+            return post;
+        });
+        onDataReceived(newPosts)
+    }
 
     return (
         <>
@@ -38,7 +48,11 @@ export default function Index({posts, isLoading, onDataReceived}) {
                         !isLoading
                             ?
                             posts && posts.map((post) => {
-                                return (<PostItem key={post?.id} post={post} deletePostHandler={deletePostHandler}/>);
+                                return (
+                                    <PostItem key={post?.id} post={post}
+                                              deletePostHandler={deletePostHandler}
+                                              updatePostHandler={updatePostHandler}/>
+                                );
                             })
                             :
                             <>

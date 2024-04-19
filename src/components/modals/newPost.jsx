@@ -18,7 +18,6 @@ export default function NewPost({showModal, hideModalHandler, onDataReceived, po
         posts[count] = data;
         onDataReceived(posts);
     };
-
     const inputHandler = (event) => {
         if (event.key === 'Enter') {
             saveHandler();
