@@ -1,10 +1,10 @@
 import Pencil from "../icons/pencil.jsx";
 
-export default function Edit() {
+export default function Edit({onClickHandler}) {
 
     return (
-        <button
-            className="flex items-center hover:cursor-pointer border-yellow-500 border hover:bg-yellow-500 hover:text-white dark:hover:text-black text-yellow-500 font-bold py-2 px-4 rounded dark:text-yellow-500">
+        <button onClick={onClickHandler}
+                className="flex items-center hover:cursor-pointer border-yellow-500 border hover:bg-yellow-500 hover:text-white dark:hover:text-black text-yellow-500 font-bold py-2 px-4 rounded dark:text-yellow-500">
             <span>
                 <Pencil/>
             </span>

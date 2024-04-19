@@ -1,11 +1,9 @@
-import PostItem from "./postItem.jsx";
 import '../../assets/styles/posts.css';
+
+import PostItem from "./postItem.jsx";
 import PostItemLoading from "./postItemLoading.jsx";
 import PostCard from "./postCard.jsx";
 import PostCardLoading from "./postCardLoading.jsx";
-import axios from "axios";
-import Success from "../toasts/success.js";
-import Error from "../toasts/error.js";
 
 export default function Index({posts, isLoading, onDataReceived}) {
 
@@ -14,6 +12,16 @@ export default function Index({posts, isLoading, onDataReceived}) {
             return post.id !== id;
         });
         onDataReceived(newPosts);
+    }
+    const updatePostHandler = (post, data) => {
+        let newPosts = posts.map((post) => {
+            if (post.id === data.id) {
+                post.title = data.title;
+                return post;
+            }
+            return post;
+        });
+        onDataReceived(newPosts)
     }
 
     return (
@@ -38,10 +46,15 @@ export default function Index({posts, isLoading, onDataReceived}) {
                         !isLoading
                             ?
                             posts && posts.map((post) => {
-                                return (<PostItem key={post?.id} post={post} deletePostHandler={deletePostHandler}/>);
+                                return (
+                                    <PostItem key={post?.id} post={post}
+                                              deletePostHandler={deletePostHandler}
+                                              updatePostHandler={updatePostHandler}/>
+                                );
                             })
                             :
                             <>
+                                <PostItemLoading/>
                                 <PostItemLoading/>
                                 <PostItemLoading/>
                                 <PostItemLoading/>
@@ -57,10 +70,15 @@ export default function Index({posts, isLoading, onDataReceived}) {
                     !isLoading
                         ?
                         posts && posts.map((post) => {
-                            return (<PostCard key={post?.id} post={post}/>);
+                            return (
+                                <PostCard key={post?.id} post={post}
+                                          deletePostHandler={deletePostHandler}
+                                          updatePostHandler={updatePostHandler}/>
+                            );
                         })
                         :
                         <>
+                            <PostCardLoading/>
                             <PostCardLoading/>
                             <PostCardLoading/>
                             <PostCardLoading/>
