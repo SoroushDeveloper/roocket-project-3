@@ -3,11 +3,11 @@ import HomeIcon from "../icons/homeIcon.jsx";
 import Paper from "../icons/paper.jsx";
 import SidebarItem from "./sidebarItem.jsx";
 import Close from "../buttons/close.jsx";
-import {useSelector, useDispatch} from 'react-redux';
-import {showSidebar, hideSidebar} from '../../features/sidebarSlice.js';
 import H3 from "../headings/h3.jsx";
 import Hr from "../partial/hr.jsx";
-import HomeButton from "../buttons/homeButton.jsx";
+
+import {useSelector, useDispatch} from 'react-redux';
+import {showSidebar, hideSidebar} from '../../features/sidebarSlice.js';
 
 export default function Sidebar() {
     const visible = useSelector((state) => state.sidebar.visible);
@@ -54,9 +54,6 @@ export default function Sidebar() {
                     </ul>
                 </div>
             </aside>
-            {
-                pathName === '/' ? null : <HomeButton/>
-            }
         </>
     )
 }
