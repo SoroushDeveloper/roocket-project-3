@@ -7,6 +7,7 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {getToken, hasToken} from "../features/authSlice.js";
 import BarChart from "../components/charts/BarChart.jsx";
+import BarChartLoading from "../components/placeholders/barChart.jsx";
 
 export default function Home() {
     const [chartData, setChartData] = useState(null);
@@ -40,12 +41,16 @@ export default function Home() {
                     <ShowLink props={{title: 'Show Posts', link: '/posts'}}/>
                 </div>
                 {
-                    chartData !== null ? <>
-                        <hr className="m-5"/>
-                        <H1 text={'Statistics'}/>
-                        <br/>
-                        <BarChart chartData={chartData}/>
-                    </> : null
+                    chartData !== null
+                        ?
+                        <>
+                            <hr className="m-5"/>
+                            <H1 text={'Statistics'}/>
+                            <br/>
+                            <BarChart chartData={chartData}/>
+                        </>
+                        :
+                        <BarChartLoading/>
                 }
             </>
         )

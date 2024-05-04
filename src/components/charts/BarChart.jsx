@@ -42,7 +42,7 @@ export default function BarChart({chartData}) {
         labels,
         datasets: [
             {
-                label: 'Data',
+                label: 'Amount',
                 backgroundColor: 'rgba(75,192,192,1)',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 2,
