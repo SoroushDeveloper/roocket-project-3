@@ -6,7 +6,8 @@ import H1 from "../components/headings/h1.jsx";
 import Success from "../components/toasts/success.js";
 import Error from "../components/toasts/error.js";
 import {useDispatch, useSelector} from "react-redux";
-import {getToken, hasToken, setToken, setUsername} from '../features/authSlice.js';
+import {hasToken, setToken, setUsername} from '../features/authSlice.js';
+import Loading from "../components/buttons/loading.jsx";
 
 export default function Login() {
     const url = 'https://react-camp-api.roocket.ir/api/admin/login';
@@ -16,9 +17,11 @@ export default function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setIsLoading(true);
         let data = {
             email: email,
             password: password,
@@ -34,6 +37,9 @@ export default function Login() {
             })
             .catch(function (error) {
                 Error(error.response.data.message);
+            })
+            .finally(function () {
+                setIsLoading(false);
             });
     }
 
@@ -69,7 +75,7 @@ export default function Login() {
                         </div>
                     </div>
                     <div className="flex justify-center mt-5">
-                        <LoginButton/>
+                        {isLoading ? <Loading/> : <LoginButton/>}
                     </div>
                 </form>
             </div>
