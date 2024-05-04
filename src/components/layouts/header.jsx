@@ -19,15 +19,15 @@ export default function Header() {
 
     if (isAuth) {
         return (
-            <>
+            <div className="fixed top-0 mt-2">
                 <LogoutButton onClickHandler={logoutHandler}/>
-                <div className="text-center fixed top-0 mt-2">
+                <div className="text-center">
                     <p className="text-gray-900 dark:text-gray-100 bg-gray-200 dark:bg-gray-800 p-2 rounded">
                         {username}
                     </p>
                 </div>
                 <Sidebar/>
-            </>
+            </div>
         )
     }
 }

@@ -6,9 +6,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {getToken, hasToken} from "../features/authSlice.js";
+import BarChart from "../components/charts/BarChart.jsx";
 
 export default function Home() {
-    const [chartData, setChartData] = useState({});
+    const [chartData, setChartData] = useState(null);
     const dispatch = useDispatch();
     dispatch(hasToken());
     dispatch(getToken());
@@ -18,27 +19,34 @@ export default function Home() {
     const url = 'https://react-camp-api.roocket.ir/api/admin/dashboard';
     const headers = {Authorization: `Bearer ${token}`}
     const getChartData = async () => {
-        await axios
-            .get(url, {headers})
-            .then((response) => {
-                setChartData(response.data.data);
-            })
-            .catch((error) => {
-                Error(error.response.data.message);
-            });
-    }
+        try {
+            const response = await axios.get(url, {headers});
+            setChartData(response.data.data);
+        } catch (error) {
+            Error(error.response.data.message);
+        }
+    };
+
     useEffect(() => {
-        getChartData()
-    }, [])
+        getChartData();
+    }, []);
+
     if (isAuth) {
         return (
             <>
                 <H1 text={'Welcome'}/>
-                <hr className="m-5"/>
+                <br/>
                 <div className="flex justify-center">
                     <ShowLink props={{title: 'Show Posts', link: '/posts'}}/>
                 </div>
-                {/*<BarChart data={chartData}/>*/}
+                {
+                    chartData !== null ? <>
+                        <hr className="m-5"/>
+                        <H1 text={'Statistics'}/>
+                        <br/>
+                        <BarChart chartData={chartData}/>
+                    </> : null
+                }
             </>
         )
     } else
