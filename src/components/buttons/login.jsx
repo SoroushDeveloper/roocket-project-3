@@ -8,7 +8,7 @@ export default function LoginButton() {
                 <CheckCircle/>
             </span>
             <span className="ml-2 button-text">
-                LogIn
+                Login
             </span>
         </button>
     )
