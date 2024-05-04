@@ -40,18 +40,10 @@ export default function Home() {
                 <div className="flex justify-center">
                     <ShowLink props={{title: 'Show Posts', link: '/posts'}}/>
                 </div>
-                {
-                    chartData !== null
-                        ?
-                        <>
-                            <hr className="m-5"/>
-                            <H1 text={'Statistics'}/>
-                            <br/>
-                            <BarChart chartData={chartData}/>
-                        </>
-                        :
-                        <BarChartLoading/>
-                }
+                <hr className="m-5"/>
+                <H1 text={'Statistics'}/>
+                <br/>
+                {chartData !== null ? <BarChart chartData={chartData}/> : <BarChartLoading/>}
             </>
         )
     } else
